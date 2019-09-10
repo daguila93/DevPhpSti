@@ -1,12 +1,10 @@
-<?php
-	$array = [];
+<?php	
+	require('myFunctions.php');
 	$separador = '';
-        for($i=1; $i<=5; $i++){
-        $array[$i] = readline('Digite o ' .  $i . 'º elemento: ');
-        }
+        $array = criaVetorComElementosCondicionais();
         echo '[';
-        for($i = 1; $i<=5; $i++){
-		if($i<4){
+        for($i = 0; $i< count($array); $i++){
+		if($i<count($array)-1){
 			$separador = '|';	
 		} else {
 			$separador = '';
@@ -14,6 +12,3 @@
 		echo $array[$i] . $separador;
         }
 	echo "] \n";
-
-
-

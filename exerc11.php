@@ -1,8 +1,10 @@
 <?php
 	require('myFunctions.php');
 	$matriz = array(
-			 array(1, 3, 234, -890),
-			 array('Charmander', 'Ivete', 121, 'Hallowed Be Thy Name')
+			 array(1, 'Charmander'),
+			 array(3, 'Ivete'),
+			 array(234, 121),
+			 array(-890, 'Hallowed Be Thy Name')
 		);
 
 	printarMatriz($matriz);
