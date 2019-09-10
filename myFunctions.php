@@ -1,11 +1,12 @@
 <?php
 	function printarMatriz($matriz){
-		for($i=0; $i<count($matriz); $i++){
-			for($j=0; $j<count($matriz[$i]); $j++){
-			        echo $matriz[$i][$j] . ' ';
-			}
-			echo "\n";
-		}
+		foreach($matriz as $value){
+			foreach($value as $valor){
+				echo $valor . ' ';
+			};
+			echo  "\n";
+		};	
+		
 	}
 	
 	function criarMatriz($linha, $coluna){
