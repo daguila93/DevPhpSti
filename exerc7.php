@@ -5,3 +5,4 @@
 	printaVetorComPipe($arr, true);
 
 	echo "\n" . 'Fim do programa' . "\n";
+
