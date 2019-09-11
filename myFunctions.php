@@ -113,4 +113,67 @@
 		}
 		return $buffer;
 	}
+	
+	function matrizTransposta($matriz){
+                $matrizTransposta = [];
+                for($i=0; $i<count($matriz); $i++){
+                        for($j=0; $j<count($matriz[$i]); $j++){
+                                $matrizTransposta[$j][$i] = $matriz[$i][$j];
+                        }
+                }
+                return $matrizTransposta;
+        };
+	
+	function printaVetorComSeparadorDeInicioEFIm($array, $separadorInicial, $separadorFinal){
+		echo $separadorInicial;
+		for($i = 0; $i< count($array); $i++){
+			if($i<count($array)-1){
+				$separador = '|';	
+			} else {
+				$separador = '';
+			}
+			echo $array[$i] . $separador;
+		}
+		echo "$separadorFinal \n";
+	}
 
+	function printaMatrizComSeparadorDeInicioEFim($array, $separadorInicial, $separadorFinal){
+		echo $separadorInicial;
+		foreach($array as $arrayLinha){
+			for($i=0; $i<count($arrayLinha); $i++){
+				if($i<count($arrayLinha)-1){
+					$separador = '';
+				}
+			}
+		}
+		echo "$separadorFinal \n";
+	}
+
+	function retornaMatrizComElementosDeMesmoTamanho($array){
+		$tamanhoDaMaiorPalavra = 0;
+		for($i=0; $i<count($array); $i++){
+			$tamanhoDaMaiorPalavra = maiorQuantidadeCaracteres($array[$i]);
+			
+		}
+		return retornaEspacoEmBrancoNaMatriz($array, $tamanhoDaMaiorPalavra);
+	}
+	
+	function retornaEspacoEmBrancoNaMatriz($array, $tamanho){
+		$matriz = transformaElementosEmString($array);
+		foreach($matriz as $arrayLinha){
+			for($i=0; $i<count($arrayLinha); $i++){
+	                $matriz[$i] .= adicionaEspacosEmBranco($matriz[$i], $tamanho);
+	        	}
+		}
+	        return $matriz;
+	}
+
+	function transformaElementosEmString($matriz){
+		$arr = array();
+		foreach($matriz as $vetorLinha){
+			for($i=0; $i<count($vetorLinha); $i++){
+				array_push($arr, '' . $vetorLinha[$i]);
+			}
+		}		
+		return 	$arr;
+	}

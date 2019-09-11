@@ -10,14 +10,4 @@
 	$matrizTransposta = matrizTransposta($matriz);
 
 	echo "\n \n" . 'Matriz Transposta' . "\n \n";
-	printarMatriz($matrizTransposta);
-        
-	function matrizTransposta($matriz){
-		$matrizTransposta = [];
-		for($i=0; $i<count($matriz); $i++){
-			for($j=0; $j<count($matriz[$i]); $j++){
-				$matrizTransposta[$j][$i] = $matriz[$i][$j];
-			}
-		}
-		return $matrizTransposta;
-	};
+	printarMatriz($matrizTransposta);        
