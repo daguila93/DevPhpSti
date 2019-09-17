@@ -19,26 +19,6 @@
 		return $matriz;
 	}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	function retornaMatrizComElementosDeMesmoTamanho($matriz, $tamanhos){
-		for($i=0; $i<count($matriz); $i++){
-			for($j=0; $j<count($matriz[$i]); $j++){
-                        	 $matriz[$i][$j] = adicionaEspacosEmBranco($matriz[$i][$j], $tamanhos[$i]);
-			}
-		}
-                 return $matriz;
-         }
- 
-         function retornaMatrizComElementosDeMesmoTamanhoAlinhadoADireita($matriz, $tamanhos){
-		 for($i=0; $i<count($matriz); $i++){
-		 	for($j=0; $j<count($matriz[$i]); $j++){
-                 		$matriz[$i][$j] = adicionaEspacosEmBranco($matriz[$i][$j], $tamanho[$i]) . $matriz[$i][$j];
-                  	}
-		 }
-		  return $matriz;
-         }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	function matrizTransposta($matriz){
                 $matrizTransposta = [];
                 for($i=0; $i<count($matriz); $i++){
@@ -50,15 +30,7 @@
         };
 
 	function printaMatrizComSeparadorDeInicioEFim($array, $separadorInicial, $separadorFinal){
-		echo $separadorInicial;
-		foreach($array as $arrayLinha){
-			for($i=0; $i<count($arrayLinha); $i++){
-				if($i<count($arrayLinha)-1){
-					$separador = '';
-				}
-			}
-		}
-		echo "$separadorFinal \n";
+		//todo 
 	}
 
 	function retornaMatrizComElementosString($matriz){
@@ -71,13 +43,25 @@
 		return $matrizComElementosString;
 	}
 
-	function retornaMatrizComSeparador($matriz){
-		$maiorTamanho = retornaArrayComMaioresElementosDeCadaVetor($matriz);
-		$matrizComSeparador = array();
+	function retornaMatrizComElementosDeMesmoTamanho($matriz){
+		$maioresTamanhos = retornaVetorComMaioresElementosDoArray($matriz);
+		$matrizNova = array();
+		
 		for($i=0; $i<count($matriz); $i++){
-			for($j=0; $j < count($matriz[$i]); $j++){
-			//	$matrizComSeparador[$i][$j] = //todo isNumeric();	
+			if(isVetorContemNumerico($matriz[$i])){
+				$matrizNova[$i] = retornaVetorComElementosDeMesmoTamanhoAlinhadoADireita($matriz[$i], $maioresTamanhos[$i]);
+			} else {
+				$matrizNova[$i] = retornaVetorComElementosDeMesmoTamanho($matriz[$i], $maioresTamanhos[$i]);
 			}
 		}
-		return $matrizComSeparador;
+		return $matrizNova;
+	}
+
+	function isVetorContemNumerico($vetor){
+		foreach($vetor as $value){
+			if(!is_numeric($value)){
+				return false;
+			} 
+		}
+		return true;
 	}

@@ -51,7 +51,7 @@
 		}
 		return $arrayDeTamanhos;
 	}
-	
+	///////////////////////////////////////////////////////////////////////////////////////////
 	function retornaVetorComElementosDeMesmoTamanho($array, $tamanho){
 	        for($i=0; $i<count($array); $i++){
 	                $array[$i] .= adicionaEspacosEmBranco($array[$i], $tamanho);
@@ -65,7 +65,7 @@
 	        }
 	        return $array;
 	}
-		
+	///////////////////////////////////////////////////////////////////////////////////////////	
 	function adicionaEspacosEmBranco($string, $tamanho){
 	        $elementoGrande = '';
 	        $espacos = $tamanho - strlen($string);
@@ -131,8 +131,8 @@
                  $buffer = 0;
                  for($i=0; $i<count($matriz); $i++){
                       for($j=0; $j<count($matriz[$i]); $j++){
-                                 if($buffer<$matriz[$i][$j]){
-                                         $buffer = $matriz[$i][$j];
+                                 if($buffer<strlen($matriz[$i][$j])){
+                                         $buffer = strlen($matriz[$i][$j]);
                                  }
                          }
                          $arrayDeTamanho[$i] = $buffer;
@@ -140,4 +140,3 @@
                  }
                  return $arrayDeTamanhos;
          }
-

@@ -10,14 +10,23 @@
 		);
 
 	$matrizTransposta = matrizTransposta($matriz);
-	printarMatriz($matrizTransposta);
+	//printarMatriz($matrizTransposta);
 
 	$matrizComElementosString = retornaMatrizComElementosString($matrizTransposta);
-	var_dump($matrizComElementosString);
-	$retornaVetorComLarguraDasColunas = retornaVetorComMaioresElementosDoArray($matrizComElementosString);
-	var_dump($retornaVetorComLarguraDasColunas);
-	$matrizNormalComElementosString = matrizTransposta($matrizComElementosString);
-	var_dump($matrizNormalComElementosString);
 
-	$matrizComElementosDeMesmoTamanhos = retornaMatrizComElementosDeMesmoTamanho($matrizNormalComElementosString, $retornaVetorComLarguraDasColunas);
-	printarMatriz($matrizNormalComElementosString);
+	$matrizDeElementosDeMesmoTamanho = retornaMatrizComElementosDeMesmoTamanho($matrizComElementosString);
+
+	$matrizNormalComElementosStringDeMesmoTamanho = matrizTransposta($matrizDeElementosDeMesmoTamanho);
+
+	printarMatriz($matrizNormalComElementosStringDeMesmoTamanho);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+	$separador = '';
+        $array = criaVetorComElementosCondicionais();
+	$separadorInicial = '|';
+	$separadorFinal = '|';
+        printaVetorComSeparadorDeInicioEFIm($array, $separadorInicial, $separadorFinal);
+*/
+	
