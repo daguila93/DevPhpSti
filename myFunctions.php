@@ -1,23 +1,6 @@
 <?php
-	function printarMatriz($matriz, $alinhamentoColuna = false){
-			foreach($matriz as $value){
-				foreach($value as $valor){
-					echo $valor . ' ';
-				};
-				echo  "\n";
-			};
-	}
-	
-	function criarMatriz($linha, $coluna){
-		$matriz = [];
-		for($i=0; $i<$linha; $i++){
-			for($j=0; $j<$coluna; $j++){
-			        $matriz[$i][$j] =  rand(0, 9);
-			}
-		}
-		return $matriz;
-	}
-	
+	require('matriz.php');
+		
 	function criaVetorComElementosCondicionais(){
 		$arr = array();
 		do {
@@ -53,6 +36,21 @@
 		}
 		return $tamanho;
 	}
+
+	function retornaVetorComMaioresElementosDoArray($matriz){
+		$tamanho = 0;
+		$arrayDeTamanhos = array();
+		for($i = 0; $i<count($matriz); $i++){
+			for($j=0; $j<count($matriz[$i]); $j++){
+				if($tamanho<strlen($matriz[$i][$j])){
+					$tamanho = strlen($matriz[$i][$j]);
+				}
+				$arrayDeTamanhos[$i] = $tamanho; 
+				$tamanho = 0;
+			}
+		}
+		return $arrayDeTamanhos;
+	}
 	
 	function retornaVetorComElementosDeMesmoTamanho($array, $tamanho){
 	        for($i=0; $i<count($array); $i++){
@@ -67,7 +65,7 @@
 	        }
 	        return $array;
 	}
-	
+		
 	function adicionaEspacosEmBranco($string, $tamanho){
 	        $elementoGrande = '';
 	        $espacos = $tamanho - strlen($string);
@@ -114,16 +112,7 @@
 		return $buffer;
 	}
 	
-	function matrizTransposta($matriz){
-                $matrizTransposta = [];
-                for($i=0; $i<count($matriz); $i++){
-                        for($j=0; $j<count($matriz[$i]); $j++){
-                                $matrizTransposta[$j][$i] = $matriz[$i][$j];
-                        }
-                }
-                return $matrizTransposta;
-        };
-	
+		
 	function printaVetorComSeparadorDeInicioEFIm($array, $separadorInicial, $separadorFinal){
 		echo $separadorInicial;
 		for($i = 0; $i< count($array); $i++){
@@ -137,43 +126,18 @@
 		echo "$separadorFinal \n";
 	}
 
-	function printaMatrizComSeparadorDeInicioEFim($array, $separadorInicial, $separadorFinal){
-		echo $separadorInicial;
-		foreach($array as $arrayLinha){
-			for($i=0; $i<count($arrayLinha); $i++){
-				if($i<count($arrayLinha)-1){
-					$separador = '';
-				}
-			}
-		}
-		echo "$separadorFinal \n";
-	}
+	function retornaArrayComMaioresElementosDeCadaVetor($matriz){
+                 $arrayDeTamanhos = array();
+                 $buffer = 0;
+                 for($i=0; $i<count($matriz); $i++){
+                      for($j=0; $j<count($matriz[$i]); $j++){
+                                 if($buffer<$matriz[$i][$j]){
+                                         $buffer = $matriz[$i][$j];
+                                 }
+                         }
+                         $arrayDeTamanho[$i] = $buffer;
+                         $buffer = 0;
+                 }
+                 return $arrayDeTamanhos;
+         }
 
-	function retornaMatrizComElementosDeMesmoTamanho($array){
-		$tamanhoDaMaiorPalavra = 0;
-		for($i=0; $i<count($array); $i++){
-			$tamanhoDaMaiorPalavra = maiorQuantidadeCaracteres($array[$i]);
-			
-		}
-		return retornaEspacoEmBrancoNaMatriz($array, $tamanhoDaMaiorPalavra);
-	}
-	
-	function retornaEspacoEmBrancoNaMatriz($array, $tamanho){
-		$matriz = transformaElementosEmString($array);
-		foreach($matriz as $arrayLinha){
-			for($i=0; $i<count($arrayLinha); $i++){
-	                $matriz[$i] .= adicionaEspacosEmBranco($matriz[$i], $tamanho);
-	        	}
-		}
-	        return $matriz;
-	}
-
-	function transformaElementosEmString($matriz){
-		$arr = array();
-		foreach($matriz as $vetorLinha){
-			for($i=0; $i<count($vetorLinha); $i++){
-				array_push($arr, '' . $vetorLinha[$i]);
-			}
-		}		
-		return 	$arr;
-	}

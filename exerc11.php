@@ -11,10 +11,13 @@
 
 	$matrizTransposta = matrizTransposta($matriz);
 	printarMatriz($matrizTransposta);
-	
-	$matrizTranspostaNormalizada = retornaMatrizComElementosDeMesmoTamanho($matrizTransposta);
-	var_dump($matrizTranspostaNormalizada);
-	$novaMatriz = matrizTransposta($matrizTranspostaNormalizada);
 
-	printaMatrizComSeparadorDeInicioEFim($novaMatriz, $separadorInicial, $separadorFinal);
+	$matrizComElementosString = retornaMatrizComElementosString($matrizTransposta);
+	var_dump($matrizComElementosString);
+	$retornaVetorComLarguraDasColunas = retornaVetorComMaioresElementosDoArray($matrizComElementosString);
+	var_dump($retornaVetorComLarguraDasColunas);
+	$matrizNormalComElementosString = matrizTransposta($matrizComElementosString);
+	var_dump($matrizNormalComElementosString);
 
+	$matrizComElementosDeMesmoTamanhos = retornaMatrizComElementosDeMesmoTamanho($matrizNormalComElementosString, $retornaVetorComLarguraDasColunas);
+	printarMatriz($matrizNormalComElementosString);
