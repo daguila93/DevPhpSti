@@ -3,7 +3,7 @@
 	function printarMatriz($matriz, $alinhamentoColuna = false){
 			foreach($matriz as $value){
 				foreach($value as $valor){
-					echo $valor . ' ';
+					echo $valor;
 				};
 				echo  "\n";
 			};
@@ -28,10 +28,6 @@
                 }
                 return $matrizTransposta;
         };
-
-	function printaMatrizComSeparadorDeInicioEFim($array, $separadorInicial, $separadorFinal){
-		//todo 
-	}
 
 	function retornaMatrizComElementosString($matriz){
 		$matrizComElementosString = array();
@@ -64,4 +60,17 @@
 			} 
 		}
 		return true;
+	}
+
+	function adicionarPipesNaMatriz($matriz){
+		$matrizComPipe = $matriz;
+        for ($i=0; $i < count($matrizComPipe); $i++) {
+            for ($j=0; $j < count($matrizComPipe[$i]); $j++){
+                $matrizComPipe[$i][$j] = '|'. $matrizComPipe[$i][$j];
+                if($j == count($matrizComPipe[$i]) -1 ){
+                    $matrizComPipe[$i][$j] = $matrizComPipe[$i][$j] . '|';
+                }
+            }
+        }
+		return $matrizComPipe;
 	}

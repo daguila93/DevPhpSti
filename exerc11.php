@@ -3,14 +3,13 @@
 	$separadorInicial = '[';
 	$separadorFinal = ']';
 	$matriz = array(
-			 array(1, 'Charmander'),
-			 array(3, 'Ivete'),
-			 array(234, 121),
-			 array(-890, 'Hallowed Be Thy Name')
+			 array(1, 'Charmander', 'sdasdasdas', 10, 1000),
+			 array(3, 'Ivete', 454564, 10, 1000),
+			 array(234, 121, 'sadasdsa', 10, 'a'),
+			 array(-890, 'Hallowed Be Thy Name', 'dsdasdasd', 100, 'bg')
 		);
 
 	$matrizTransposta = matrizTransposta($matriz);
-	//printarMatriz($matrizTransposta);
 
 	$matrizComElementosString = retornaMatrizComElementosString($matrizTransposta);
 
@@ -18,15 +17,10 @@
 
 	$matrizNormalComElementosStringDeMesmoTamanho = matrizTransposta($matrizDeElementosDeMesmoTamanho);
 
-	printarMatriz($matrizNormalComElementosStringDeMesmoTamanho);
+	$matrizComPipe = adicionarPipesNaMatriz($matrizNormalComElementosStringDeMesmoTamanho);
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-	$separador = '';
-        $array = criaVetorComElementosCondicionais();
-	$separadorInicial = '|';
-	$separadorFinal = '|';
-        printaVetorComSeparadorDeInicioEFIm($array, $separadorInicial, $separadorFinal);
-*/
-	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $tamanhoDosMaioresElementosDasColunas = retornaVetorComMaioresElementosDoArray($matrizDeElementosDeMesmoTamanho);
+    printarSeparadorDoTamanhoDaMatriz($tamanhoDosMaioresElementosDasColunas);
+	printarMatriz($matrizComPipe); //$matrizNormalComElementosStringDeMesmoTamanho
+    printarSeparadorDoTamanhoDaMatriz($tamanhoDosMaioresElementosDasColunas);

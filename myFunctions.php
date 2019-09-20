@@ -38,15 +38,18 @@
 	}
 
 	function retornaVetorComMaioresElementosDoArray($matriz){
-		$tamanho = 0;
+
 		$arrayDeTamanhos = array();
 		for($i = 0; $i<count($matriz); $i++){
+
+            $tamanho = 0;
+
 			for($j=0; $j<count($matriz[$i]); $j++){
 				if($tamanho<strlen($matriz[$i][$j])){
 					$tamanho = strlen($matriz[$i][$j]);
 				}
 				$arrayDeTamanhos[$i] = $tamanho; 
-				$tamanho = 0;
+
 			}
 		}
 		return $arrayDeTamanhos;
@@ -126,17 +129,12 @@
 		echo "$separadorFinal \n";
 	}
 
-	function retornaArrayComMaioresElementosDeCadaVetor($matriz){
-                 $arrayDeTamanhos = array();
-                 $buffer = 0;
-                 for($i=0; $i<count($matriz); $i++){
-                      for($j=0; $j<count($matriz[$i]); $j++){
-                                 if($buffer<strlen($matriz[$i][$j])){
-                                         $buffer = strlen($matriz[$i][$j]);
-                                 }
-                         }
-                         $arrayDeTamanho[$i] = $buffer;
-                         $buffer = 0;
-                 }
-                 return $arrayDeTamanhos;
-         }
+	function printarSeparadorDoTamanhoDaMatriz($arrayDeTamanhos, $separador = '*'){
+		$quantidadeDePipesParaAdcionarNaLargura = count($arrayDeTamanhos);
+		$larguraDasColunasSomadas = array_sum($arrayDeTamanhos);
+		$larguraDaMatriz = $larguraDasColunasSomadas + $quantidadeDePipesParaAdcionarNaLargura ;
+	    for($i = 0; $i <= $larguraDaMatriz; $i++){
+	        echo $separador;
+        }
+	    echo "\n";
+    }
