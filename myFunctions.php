@@ -71,7 +71,7 @@
 	///////////////////////////////////////////////////////////////////////////////////////////	
 	function adicionaEspacosEmBranco($string, $tamanho){
 	        $elementoGrande = '';
-	        $espacos = $tamanho - strlen($string);
+		$espacos = $tamanho - strlen($string);
 	        for($i=0; $i<$espacos; $i++){
 	                $elementoGrande .= " ";
 	        }
@@ -137,4 +137,19 @@
 	        echo $separador;
         }
 	    echo "\n";
+    }
+
+    function receberDadosMatriz(){
+	    $numeroDeLinhas = readline('Digite o número de Linhas: ');
+	    $numeroDeColunas = readline('Digite o número de Colunas: ');
+	    $matrizComDadosPreenchidos = array();
+	    for($i=0; $i < $numeroDeLinhas; $i++){
+		    for($j=0; $j < $numeroDeColunas; $j++){
+			    $posicaoLinha = $i+1;
+			    $posicaoColuna = $j+1;
+			    $matrizComDadosPreenchidos[$i][$j] = readline("Digite o elemento da $posicaoLinha" . "ª linha, $posicaoColuna" ."ª coluna da matriz: ");
+		    }
+	    }
+	
+	    return $matrizComDadosPreenchidos;
     }

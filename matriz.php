@@ -55,7 +55,7 @@
 
 	function isVetorContemNumerico($vetor){
 		foreach($vetor as $value){
-			if(!is_numeric($value)){
+			if(!is_numeric($value) &&  $value != ''){
 				return false;
 			} 
 		}
