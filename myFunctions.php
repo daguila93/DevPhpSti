@@ -71,7 +71,7 @@
 	///////////////////////////////////////////////////////////////////////////////////////////	
 	function adicionaEspacosEmBranco($string, $tamanho){
 	        $elementoGrande = '';
-		$espacos = $tamanho - strlen($string);
+		$espacos = $tamanho - mb_strlen($string);
 	        for($i=0; $i<$espacos; $i++){
 	                $elementoGrande .= " ";
 	        }
