@@ -1,5 +1,8 @@
 <?php
 	require('myFunctions.php');
+
+    $filePath  = './fileHandle/csv/mlb_players2.csv';
+
 	$separadorInicial = '[';
 	$separadorFinal = ']';
 	
@@ -11,7 +14,7 @@
 			 array(-890, 'Hallowed Be Thy Name', 'dsdasdasd', 100, 'bg')
 		);
 
-	$matrizComDadosPedidos = receberDadosMatriz();
+	$matrizComDadosPedidos =  fileReader($filePath); // Quando quiser receber dados do usuário, utilize isso: receberDadosMatriz();
 
 	$matrizTransposta = matrizTransposta($matrizComDadosPedidos);
 

@@ -6,7 +6,7 @@
 					echo $valor;
 				};
 				echo  "\n";
-			};
+			}
 	}
 	
 	function criarMatriz($linha, $coluna){
@@ -20,14 +20,14 @@
 	}
 
 	function matrizTransposta($matriz){
-                $matrizTransposta = [];
-                for($i=0; $i<count($matriz); $i++){
-                        for($j=0; $j<count($matriz[$i]); $j++){
-                                $matrizTransposta[$j][$i] = $matriz[$i][$j];
-                        }
-                }
-                return $matrizTransposta;
-        };
+        $matrizTransposta = [];
+        for($i=0; $i<count($matriz); $i++){
+               for($j=0; $j<count($matriz[$i]); $j++){
+                       $matrizTransposta[$j][$i] = $matriz[$i][$j];
+               }
+        }
+        return $matrizTransposta;
+	}
 
 	function retornaMatrizComElementosString($matriz){
 		$matrizComElementosString = array();
@@ -42,8 +42,9 @@
 	function retornaMatrizComElementosDeMesmoTamanho($matriz){
 		$maioresTamanhos = retornaVetorComMaioresElementosDoArray($matriz);
 		$matrizNova = array();
+		$quantidadeDeColunas = count($matriz);
 		
-		for($i=0; $i<count($matriz); $i++){
+		for($i=0; $i< $quantidadeDeColunas; $i++){
 			if(isVetorContemNumerico($matriz[$i])){
 				$matrizNova[$i] = retornaVetorComElementosDeMesmoTamanhoAlinhadoADireita($matriz[$i], $maioresTamanhos[$i]);
 			} else {
@@ -53,22 +54,27 @@
 		return $matrizNova;
 	}
 
-	function isVetorContemNumerico($vetor){
-		foreach($vetor as $value){
-			if(!is_numeric($value) &&  $value != ''){
-				return false;
-			} 
-		}
-		return true;
-	}
+	function isVetorContemNumerico($coluna){
+	    for ($j = 0; $j < count($coluna); $j++) {
+	        if ($j!=0){
+                if(!is_numeric($coluna[$j]) &&  $coluna[$j] != ''){
+                    return false;
+                }
+                return true;
+            } else {
+	            continue;
+            }
+
+        }
+    }
 
 	function adicionarPipesNaMatriz($matriz){
 		$matrizComPipe = $matriz;
         for ($i=0; $i < count($matrizComPipe); $i++) {
             for ($j=0; $j < count($matrizComPipe[$i]); $j++){
-                $matrizComPipe[$i][$j] = '|'. $matrizComPipe[$i][$j];
+                $matrizComPipe[$i][$j] ='|'.$matriz[$i][$j];
                 if($j == count($matrizComPipe[$i]) -1 ){
-                    $matrizComPipe[$i][$j] = $matrizComPipe[$i][$j] . '|';
+                    $matrizComPipe[$i][$j] = $matrizComPipe[$i][$j].'|';
                 }
             }
         }

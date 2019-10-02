@@ -1,5 +1,6 @@
 <?php
 	require('matriz.php');
+	require ('fileHandler.php');
 		
 	function criaVetorComElementosCondicionais(){
 		$arr = array();
@@ -22,7 +23,7 @@
 
 		} else {
 			foreach($arr as $array){
-				echo '| ' . $array . ' |' . "\n";	
+				echo '| ' . $array . ' |' . "\n";
 			};
 		}
 	}
@@ -45,8 +46,8 @@
             $tamanho = 0;
 
 			for($j=0; $j<count($matriz[$i]); $j++){
-				if($tamanho<strlen($matriz[$i][$j])){
-					$tamanho = strlen($matriz[$i][$j]);
+				if($tamanho < mb_strlen($matriz[$i][$j])){
+					$tamanho = mb_strlen($matriz[$i][$j]);
 				}
 				$arrayDeTamanhos[$i] = $tamanho; 
 
@@ -132,7 +133,7 @@
 	function printarSeparadorDoTamanhoDaMatriz($arrayDeTamanhos, $separador = '*'){
 		$quantidadeDePipesParaAdcionarNaLargura = count($arrayDeTamanhos);
 		$larguraDasColunasSomadas = array_sum($arrayDeTamanhos);
-		$larguraDaMatriz = $larguraDasColunasSomadas + $quantidadeDePipesParaAdcionarNaLargura ;
+		$larguraDaMatriz = $larguraDasColunasSomadas + $quantidadeDePipesParaAdcionarNaLargura;
 	    for($i = 0; $i <= $larguraDaMatriz; $i++){
 	        echo $separador;
         }
