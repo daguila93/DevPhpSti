@@ -21,7 +21,7 @@
         function trimmedElements($array){
             $arrayTrimmed = array();
             foreach ($array as $value){
-                array_push($arrayTrimmed, str_replace(' ', '', $value));
+                array_push($arrayTrimmed, array_map('trim', $value));
             }
             return $arrayTrimmed;
         }
