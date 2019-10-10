@@ -1,7 +1,7 @@
 <?php
 	require('myFunctions.php');
 	
-	$vetor = criaVetorComElementosCondicionais();
+	$vetor = readElements();
 
 	$string = readline('Digite o caracter separador: ');
 	$separador = recebeSeparadorDeUmCaracter($string);

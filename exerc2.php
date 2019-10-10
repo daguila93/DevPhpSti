@@ -1,7 +1,5 @@
 <?php	
 	require('myFunctions.php');
-	$separador = '';
-        $array = criaVetorComElementosCondicionais();
-	$separadorInicial = '[';
-	$separadorFinal = ']';
-        printaVetorComSeparadorDeInicioEFIm($array, $separadorInicial, $separadorFinal);
+	$array = readElements();
+	arrayPrint(arrayDecorated($array, '[', ']'));
+    	echo PHP_EOL;

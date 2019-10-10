@@ -1,16 +1,42 @@
 <?php
 	require('matriz.php');
-	require ('fileHandler.php');
-		
-	function criaVetorComElementosCondicionais(){
-		$arr = array();
-		do {
-	    		array_push($arr, '' . readline('Informe o elemento para o vetor: '));
-			$resposta = strtolower(readline('Deseja continuar? (s/n)'));
 
-		} while ($resposta == 's');
-		return 	$arr;
+	function readElements(){
+		$array = array();
+        do {
+		    array_push($array, readline('Input element: '));
+			$answer = strtolower(readline('Continue? (Y/n)'));
+
+		} while ($answer == 'y' || $answer == '');
+		return 	$array;
 	}
+
+	function readSingleCharacterSeparator(){
+        $separator = readline("Type the single character separator: ");
+        if(mb_strlen($separator) == 0 ){
+            return $separator = ' ';
+        } else if (mb_strlen($separator) == 1){
+            return $separator;
+        }
+        echo 'Type a single character.' . PHP_EOL;
+        exit('Ending program...' . PHP_EOL);
+    }
+
+    function addSeparator($array, $separator = ' ') {
+        $arrayWithSeparator = array();
+        foreach ($array as $value) {
+            array_push($arrayWithSeparator, $value);
+            array_push($arrayWithSeparator, $separator);
+        }
+        array_pop($arrayWithSeparator);
+        return $arrayWithSeparator;
+    }
+
+    function arrayPrint($array) {
+	    foreach ($array as $value) {
+		    echo $value;
+	    }
+    }
 	
 	function printaVetorComPipe($arr, $alinhamento = false){
 		if($alinhamento){
@@ -69,6 +95,17 @@
 	        }
 	        return $array;
 	}
+
+	function centralizeTitle($matrix){
+        $biggestElements = retornaVetorComMaioresElementosDoArray($matrix);
+
+	    for ($i=0; $i<count($matrix[0]); $i++) {
+//	        $arrayTitle = trimmedElements($matrix[0]);
+//	        $difference = $biggestElements[$i] - $arrayTitle[$i];
+//	        $blankSpaces = ($difference > 0) ?  intval($difference / 2) : $difference;
+        }
+	    return $matrix;
+    }
 	///////////////////////////////////////////////////////////////////////////////////////////	
 	function adicionaEspacosEmBranco($string, $tamanho){
 	        $elementoGrande = '';
@@ -117,17 +154,18 @@
 	}
 	
 		
-	function printaVetorComSeparadorDeInicioEFIm($array, $separadorInicial, $separadorFinal){
-		echo $separadorInicial;
+	function arrayDecorated($array, $initialSeparator, $endingSeparator){
 		for($i = 0; $i< count($array); $i++){
 			if($i<count($array)-1){
-				$separador = '|';	
+				$separator = '|';
 			} else {
-				$separador = '';
+				$separator = '';
 			}
-			echo $array[$i] . $separador;
+			$array[$i] = $array[$i] . $separator;
 		}
-		echo "$separadorFinal \n";
+		array_unshift($array, $initialSeparator);
+		array_push($array, $endingSeparator);
+		return $array;
 	}
 
 	function printarSeparadorDoTamanhoDaMatriz($arrayDeTamanhos, $separador = '*'){
@@ -153,4 +191,12 @@
 	    }
 	
 	    return $matrizComDadosPreenchidos;
+    }
+
+    function trimmedElements($array){
+        $arrayTrimmed = array();
+        foreach ($array as $value){
+            array_push($arrayTrimmed, array_map('trim', $value));
+        }
+        return $arrayTrimmed;
     }

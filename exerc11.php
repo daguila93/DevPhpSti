@@ -1,5 +1,6 @@
 <?php
 	require('myFunctions.php');
+	require('fileHandler.php');
 
     $filePath  = './fileHandle/csv/mlb_players2.csv';
 
@@ -30,3 +31,5 @@
     printarSeparadorDoTamanhoDaMatriz($tamanhoDosMaioresElementosDasColunas);
 	printarMatriz($matrizComPipe);
     printarSeparadorDoTamanhoDaMatriz($tamanhoDosMaioresElementosDasColunas);
+
+    centralizeTitle($matrizDeElementosDeMesmoTamanho);

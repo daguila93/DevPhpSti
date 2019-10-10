@@ -1,4 +1,5 @@
 <?php
+
 /**
  * filePath é o caminho para o arquivo CSV
  * @param $filePath
@@ -16,12 +17,4 @@
             }
             array_pop($array);
             return trimmedElements($array);
-        }
-
-        function trimmedElements($array){
-            $arrayTrimmed = array();
-            foreach ($array as $value){
-                array_push($arrayTrimmed, array_map('trim', $value));
-            }
-            return $arrayTrimmed;
         }

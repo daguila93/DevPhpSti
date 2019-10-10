@@ -2,7 +2,7 @@
 
 	require('myFunctions.php');
 	
-        $vetorTemporario = criaVetorComElementosCondicionais();
+        $vetorTemporario = readElements();
 	
 	$string = readline('Digite o caracter separador: ');
 	$separadorInicoFim = readline('Digite o caracter separador de Início e Fim: ');
